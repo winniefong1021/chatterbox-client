@@ -12,7 +12,8 @@ var MessagesView = {
   },
 
   renderMessage: function() {
-
+    // use Parse.create
+    console.log(Parse.create($('#message').val())); 
     this.$chats.append('<h1>Hi</h1>');
 
 
