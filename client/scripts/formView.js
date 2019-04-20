@@ -10,11 +10,10 @@ var FormView = {
     // Stop the browser from submitting the form
     event.preventDefault();
 
-    console.log($('#message').val())
     var obj = {
       username: App.username,
       text: $('#message').val(),
-      roomname: '1'
+      roomname: $('#room').val(),
     };
 
     Parse.create(obj);

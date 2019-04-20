@@ -19,6 +19,7 @@ var App = {
 
   fetch: function (callback = () => { }) {
     Parse.readAll((data) => {
+      console.log(data)
       for (var i = 0; i < data.results.length; i++) {
         var msg = {};
         if (data.results[i].username !== undefined) {
@@ -27,12 +28,20 @@ var App = {
           msg.roomName = data.results[i].roomname;
           Messages.storage.push(msg);
         }
+        
+        if (data.results[i].roomname !== null) {
+          // msg.roomName = data.results[i].roomname
+          Rooms.storage.push(data.results[i].roomname);
+          // console.log(data.results[i].roomname);
+          // Rooms.storage.push('test');
+        }
+        // console.log(Rooms.storage);
       }
 
       RoomsView.initialize();
       MessagesView.initialize(Messages.storage);
       // RoomsView.initialize();
-      RoomsView.selectRoom();
+      // RoomsView.selectRoom();
 
       callback();
     });
