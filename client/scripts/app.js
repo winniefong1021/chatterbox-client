@@ -18,19 +18,15 @@ var App = {
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
-      // examine the response from the server request:
-      // console.log(data);
+      for (var i = 0; i < data.results.length; i++) {
+        var msg = {};
+        msg.username = data.results[i].username;
+        msg.text = data.results[i].text;
+        msg.roomName = data.results[i].roomname;
+        Messages.storage.push(msg);
+      }
 
-      // for (var i = 0; i < data.results.length; i++) {
-      // // Messages.storage.push(data.results[i].text);
-      //   var msg = {};
-      //   msg.username = data.results[i].username;
-      //   msg.text = data.results[i].text;
-      //   msg.roomName = data.results[i].roomname;
-      //   Messages.storage.push(msg);
-      //   console.log(Messages);
-      // }
-      MessagesView.render(data);
+      MessagesView.initialize();
 
       callback();
     });
