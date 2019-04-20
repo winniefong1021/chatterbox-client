@@ -2,23 +2,17 @@ var MessagesView = {
 
   $chats: $('#chats'),
 
-  initialize: function() {
+  initialize: function () {
     for (var i = 0; i < Messages.storage.length; i++) {
-      var { username, text } = Messages.storage[i];
-      this.$chats.append(MessageView.render(Messages.storage[i]));
+      this.renderMessage(Messages.storage[i]);
     }
-
-
   },
 
-  renderMessage: function() {
-    // use Parse.create
-    console.log(Parse.create($('#message').val())); 
-    this.$chats.append('<h1>Hi</h1>');
-
-
-  
+  renderMessage: function (msg) {
+    var { username, text } = msg;
+    if (username !== undefined) {
+      this.$chats.append(MessageView.render(msg));
+    }
   }
-
 };
 

@@ -3,7 +3,7 @@ var App = {
 
   username: 'anonymous',
 
-  initialize: function() {
+  initialize: function () {
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
@@ -16,30 +16,30 @@ var App = {
 
   },
 
-  fetch: function(callback = ()=>{}) {
+  fetch: function (callback = () => { }) {
     Parse.readAll((data) => {
-      console.log(data.results);
       for (var i = 0; i < data.results.length; i++) {
         var msg = {};
-        if(data.results[i].username !== undefined) {
+        if (data.results[i].username !== undefined) {
           msg.username = data.results[i].username;
           msg.text = data.results[i].text;
           msg.roomName = data.results[i].roomname;
           Messages.storage.push(msg);
         }
       }
+
       MessagesView.initialize();
 
       callback();
     });
   },
 
-  startSpinner: function() {
+  startSpinner: function () {
     App.$spinner.show();
     FormView.setStatus(true);
   },
 
-  stopSpinner: function() {
+  stopSpinner: function () {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
   }
