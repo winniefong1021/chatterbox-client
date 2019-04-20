@@ -10,6 +10,7 @@ var FormView = {
     // Stop the browser from submitting the form
     event.preventDefault();
 
+    console.log($('#message').val())
     var obj = {
       username: App.username,
       text: $('#message').val(),
@@ -17,7 +18,6 @@ var FormView = {
     };
 
     Parse.create(obj);
-    this.$form.load("app.js");
   },
 
   setStatus: function (active) {

@@ -2,9 +2,9 @@ var MessagesView = {
 
   $chats: $('#chats'),
 
-  initialize: function () {
-    for (var i = 0; i < Messages.storage.length; i++) {
-      this.renderMessage(Messages.storage[i]);
+  initialize: function (arr) {
+    for (var i = 0; i < arr.length; i++) {
+      this.renderMessage(arr[i]);
     }
   },
 
@@ -13,6 +13,8 @@ var MessagesView = {
     if (username !== undefined) {
       this.$chats.append(MessageView.render(msg));
     }
+    //RoomsView.selectRoom();
+    $('#chat').empty();
   }
 };
 

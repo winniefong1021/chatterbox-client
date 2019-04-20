@@ -7,12 +7,13 @@ var App = {
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
-    RoomsView.initialize();
-    MessagesView.initialize();
+    // RoomsView.initialize();
+    // MessagesView.initialize();
 
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
+
 
   },
 
@@ -28,7 +29,10 @@ var App = {
         }
       }
 
-      MessagesView.initialize();
+      RoomsView.initialize();
+      MessagesView.initialize(Messages.storage);
+      // RoomsView.initialize();
+      RoomsView.selectRoom();
 
       callback();
     });
