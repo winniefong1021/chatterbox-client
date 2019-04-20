@@ -17,6 +17,7 @@ var FormView = {
     };
 
     Parse.create(obj);
+    this.$form.load("app.js");
   },
 
   setStatus: function (active) {
