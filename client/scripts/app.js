@@ -30,18 +30,14 @@ var App = {
         }
         
         if (data.results[i].roomname !== null) {
-          // msg.roomName = data.results[i].roomname
           Rooms.storage.push(data.results[i].roomname);
-          // console.log(data.results[i].roomname);
-          // Rooms.storage.push('test');
         }
-        // console.log(Rooms.storage);
       }
 
       RoomsView.initialize();
       MessagesView.initialize(Messages.storage);
       // RoomsView.initialize();
-      // RoomsView.selectRoom();
+      RoomsView.selectRoom();
 
       callback();
     });

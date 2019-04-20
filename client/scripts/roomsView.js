@@ -13,8 +13,8 @@ var RoomsView = {
     for (var x = 0; x < diffRooms.length; x++) {
       this.renderRoom(diffRooms[x]);
     }
-
     this.$button.on('click', function() {RoomsView.addRoom()});
+    // this.$select.on('change', function() {RoomsView.selectRoom()});
   },
 
   renderRoom: function(room) {
@@ -31,14 +31,16 @@ var RoomsView = {
 
   selectRoom: function() {
     this.$select.on('change', function() {
+      // $('#chat').empty();
       var value = $(this).val();
-
+      console.log(value);
       var msgArr = [];
       for (var i = 0; i < Messages.storage.length; i++) {
         if (value === Messages.storage[i].roomName) {
           msgArr.push(Messages.storage[i]);
         }
       }
+      console.log(msgArr);
       MessagesView.initialize(msgArr);
     });
   }
