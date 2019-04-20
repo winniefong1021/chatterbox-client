@@ -18,12 +18,12 @@ var RoomsView = {
   },
 
   renderRoom: function(room) {
-    this.$select.append(`<option value="${room}">${room}</option>`);
+    this.$select.prepend(`<option value="${room}">${room}</option>`);
   },
 
   addRoom: function() {
     var roomname = $('#room').val();
-    this.$select.append(`<option value="${roomname}">${roomname}</option>`);
+    this.$select.prepend(`<option value="${roomname}">${roomname}</option>`);
     if (!Rooms.storage.includes(roomname)) {
       Rooms.storage.push(roomname);
     }
@@ -42,6 +42,7 @@ var RoomsView = {
       }
       console.log(msgArr);
       MessagesView.initialize(msgArr);
+      // FormView.initialize();
     });
   }
 
