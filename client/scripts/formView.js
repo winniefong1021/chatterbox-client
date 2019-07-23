@@ -11,7 +11,7 @@ var FormView = {
     var obj = {
       username: App.username,
       text: $('#message').val(),
-      roomname: '1'
+      roomname: $('#room').val(),
     };
 
     Parse.create(obj);

@@ -7,8 +7,8 @@ var App = {
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
-    RoomsView.initialize();
-    MessagesView.initialize();
+    // RoomsView.initialize();
+    // MessagesView.initialize();
 
     App.startSpinner();
     App.fetch(App.stopSpinner);
@@ -24,9 +24,15 @@ var App = {
           msg.roomName = data.results[i].roomname;
           Messages.storage.push(msg);
         }
+
+        if (data.results[i].roomname !== null) {
+          Rooms.storage.push(data.results[i].roomname);
+        }
       }
 
-      MessagesView.initialize();
+      RoomsView.initialize();
+      MessagesView.initialize(Messages.storage);
+      RoomsView.selectRoom();
 
       callback();
     });
